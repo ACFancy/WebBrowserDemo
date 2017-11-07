@@ -59,7 +59,7 @@
 }
 
 #pragma mark - init
--(instancetype)initWithUrl:(NSURL *)url{
+- (instancetype)initWithUrl:(NSURL *)url{
     self = [super init];
     if (self) {
         self.url = url;

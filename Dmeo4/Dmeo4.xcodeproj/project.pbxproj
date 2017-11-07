@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E537F1D1FB133800087B309 /* backItemImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537F121FB1337A0087B309 /* backItemImage@2x.png */; };
+		5E537F1E1FB133800087B309 /* backItemImage_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537F131FB1337A0087B309 /* backItemImage_hl@2x.png */; };
+		5E537F211FB133800087B309 /* RxWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E537F1A1FB1337A0087B309 /* RxWebViewController.m */; };
+		5E537F221FB133800087B309 /* RxWebViewNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E537F1C1FB1337A0087B309 /* RxWebViewNavigationViewController.m */; };
 		CEB4FB4E1FB089F6001B59E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4FB4D1FB089F6001B59E1 /* AppDelegate.m */; };
 		CEB4FB511FB089F6001B59E1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4FB501FB089F6001B59E1 /* ViewController.m */; };
 		CEB4FB541FB089F6001B59E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB4FB521FB089F6001B59E1 /* Main.storyboard */; };
@@ -19,6 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E537F121FB1337A0087B309 /* backItemImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backItemImage@2x.png"; sourceTree = "<group>"; };
+		5E537F131FB1337A0087B309 /* backItemImage_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backItemImage_hl@2x.png"; sourceTree = "<group>"; };
+		5E537F191FB1337A0087B309 /* RxWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RxWebViewController.h; sourceTree = "<group>"; };
+		5E537F1A1FB1337A0087B309 /* RxWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RxWebViewController.m; sourceTree = "<group>"; };
+		5E537F1B1FB1337A0087B309 /* RxWebViewNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RxWebViewNavigationViewController.h; sourceTree = "<group>"; };
+		5E537F1C1FB1337A0087B309 /* RxWebViewNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RxWebViewNavigationViewController.m; sourceTree = "<group>"; };
 		CEB4FB491FB089F6001B59E1 /* Dmeo4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dmeo4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB4FB4C1FB089F6001B59E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEB4FB4D1FB089F6001B59E1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -48,6 +58,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E537F111FB1337A0087B309 /* RxWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5E537F121FB1337A0087B309 /* backItemImage@2x.png */,
+				5E537F131FB1337A0087B309 /* backItemImage_hl@2x.png */,
+				5E537F191FB1337A0087B309 /* RxWebViewController.h */,
+				5E537F1A1FB1337A0087B309 /* RxWebViewController.m */,
+				5E537F1B1FB1337A0087B309 /* RxWebViewNavigationViewController.h */,
+				5E537F1C1FB1337A0087B309 /* RxWebViewNavigationViewController.m */,
+			);
+			path = RxWebViewController;
+			sourceTree = "<group>";
+		};
 		CEB4FB401FB089F6001B59E1 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +90,7 @@
 		CEB4FB4B1FB089F6001B59E1 /* Dmeo4 */ = {
 			isa = PBXGroup;
 			children = (
+				5E537F111FB1337A0087B309 /* RxWebViewController */,
 				CEB4FB621FB08D0E001B59E1 /* XKWebViewController */,
 				CEB4FB4C1FB089F6001B59E1 /* AppDelegate.h */,
 				CEB4FB4D1FB089F6001B59E1 /* AppDelegate.m */,
@@ -160,6 +184,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E537F1D1FB133800087B309 /* backItemImage@2x.png in Resources */,
+				5E537F1E1FB133800087B309 /* backItemImage_hl@2x.png in Resources */,
 				CEB4FB591FB089F6001B59E1 /* LaunchScreen.storyboard in Resources */,
 				CEB4FB561FB089F6001B59E1 /* Assets.xcassets in Resources */,
 				CEB4FB541FB089F6001B59E1 /* Main.storyboard in Resources */,
@@ -177,6 +203,8 @@
 				CEB4FB691FB08D0E001B59E1 /* NJKWebViewProgressView.m in Sources */,
 				CEB4FB6C1FB08D3E001B59E1 /* XKWebViewController.m in Sources */,
 				CEB4FB511FB089F6001B59E1 /* ViewController.m in Sources */,
+				5E537F221FB133800087B309 /* RxWebViewNavigationViewController.m in Sources */,
+				5E537F211FB133800087B309 /* RxWebViewController.m in Sources */,
 				CEB4FB5C1FB089F6001B59E1 /* main.m in Sources */,
 				CEB4FB4E1FB089F6001B59E1 /* AppDelegate.m in Sources */,
 			);
@@ -252,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -301,7 +329,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
