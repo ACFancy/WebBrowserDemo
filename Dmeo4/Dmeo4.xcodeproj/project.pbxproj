@@ -11,6 +11,10 @@
 		5E537F1E1FB133800087B309 /* backItemImage_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E537F131FB1337A0087B309 /* backItemImage_hl@2x.png */; };
 		5E537F211FB133800087B309 /* RxWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E537F1A1FB1337A0087B309 /* RxWebViewController.m */; };
 		5E537F221FB133800087B309 /* RxWebViewNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E537F1C1FB1337A0087B309 /* RxWebViewNavigationViewController.m */; };
+		7A4387695A195F5CD62737C1 /* libPods-Dmeo4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C57E191C59B927DAFD00D74D /* libPods-Dmeo4.a */; };
+		CE5D74A81FB1522100C7C832 /* XKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D74A71FB1522100C7C832 /* XKNavigationController.m */; };
+		CE5D74B51FB18B2F00C7C832 /* XKCommonShareChannelSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D74B21FB18B2F00C7C832 /* XKCommonShareChannelSelectionView.m */; };
+		CE5D74B61FB18B2F00C7C832 /* XKShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D74B41FB18B2F00C7C832 /* XKShareButton.m */; };
 		CEB4FB4E1FB089F6001B59E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4FB4D1FB089F6001B59E1 /* AppDelegate.m */; };
 		CEB4FB511FB089F6001B59E1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4FB501FB089F6001B59E1 /* ViewController.m */; };
 		CEB4FB541FB089F6001B59E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB4FB521FB089F6001B59E1 /* Main.storyboard */; };
@@ -23,12 +27,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36DE26770A608FC29DA87ED9 /* Pods-Dmeo4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dmeo4.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dmeo4/Pods-Dmeo4.debug.xcconfig"; sourceTree = "<group>"; };
 		5E537F121FB1337A0087B309 /* backItemImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backItemImage@2x.png"; sourceTree = "<group>"; };
 		5E537F131FB1337A0087B309 /* backItemImage_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backItemImage_hl@2x.png"; sourceTree = "<group>"; };
 		5E537F191FB1337A0087B309 /* RxWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RxWebViewController.h; sourceTree = "<group>"; };
 		5E537F1A1FB1337A0087B309 /* RxWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RxWebViewController.m; sourceTree = "<group>"; };
 		5E537F1B1FB1337A0087B309 /* RxWebViewNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RxWebViewNavigationViewController.h; sourceTree = "<group>"; };
 		5E537F1C1FB1337A0087B309 /* RxWebViewNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RxWebViewNavigationViewController.m; sourceTree = "<group>"; };
+		AEA3F761CD0515197C0C4DB2 /* Pods-Dmeo4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dmeo4.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dmeo4/Pods-Dmeo4.release.xcconfig"; sourceTree = "<group>"; };
+		C57E191C59B927DAFD00D74D /* libPods-Dmeo4.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dmeo4.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5D74A61FB1522100C7C832 /* XKNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XKNavigationController.h; sourceTree = "<group>"; };
+		CE5D74A71FB1522100C7C832 /* XKNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XKNavigationController.m; sourceTree = "<group>"; };
+		CE5D74A91FB16EAD00C7C832 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		CE5D74B11FB18B2F00C7C832 /* XKCommonShareChannelSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XKCommonShareChannelSelectionView.h; sourceTree = "<group>"; };
+		CE5D74B21FB18B2F00C7C832 /* XKCommonShareChannelSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XKCommonShareChannelSelectionView.m; sourceTree = "<group>"; };
+		CE5D74B31FB18B2F00C7C832 /* XKShareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XKShareButton.h; sourceTree = "<group>"; };
+		CE5D74B41FB18B2F00C7C832 /* XKShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XKShareButton.m; sourceTree = "<group>"; };
 		CEB4FB491FB089F6001B59E1 /* Dmeo4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dmeo4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB4FB4C1FB089F6001B59E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEB4FB4D1FB089F6001B59E1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -52,12 +66,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A4387695A195F5CD62737C1 /* libPods-Dmeo4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E7F92A5A28AC4CDFA37986A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C57E191C59B927DAFD00D74D /* libPods-Dmeo4.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5E537F111FB1337A0087B309 /* RxWebViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,11 +94,24 @@
 			path = RxWebViewController;
 			sourceTree = "<group>";
 		};
+		CE5D74B01FB18B2F00C7C832 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D74B11FB18B2F00C7C832 /* XKCommonShareChannelSelectionView.h */,
+				CE5D74B21FB18B2F00C7C832 /* XKCommonShareChannelSelectionView.m */,
+				CE5D74B31FB18B2F00C7C832 /* XKShareButton.h */,
+				CE5D74B41FB18B2F00C7C832 /* XKShareButton.m */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		CEB4FB401FB089F6001B59E1 = {
 			isa = PBXGroup;
 			children = (
 				CEB4FB4B1FB089F6001B59E1 /* Dmeo4 */,
 				CEB4FB4A1FB089F6001B59E1 /* Products */,
+				F0F13A1C3D58AD18EFD1F2DD /* Pods */,
+				1E7F92A5A28AC4CDFA37986A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +136,7 @@
 				CEB4FB551FB089F6001B59E1 /* Assets.xcassets */,
 				CEB4FB571FB089F6001B59E1 /* LaunchScreen.storyboard */,
 				CEB4FB5A1FB089F6001B59E1 /* Info.plist */,
+				CE5D74A91FB16EAD00C7C832 /* PrefixHeader.pch */,
 				CEB4FB5B1FB089F6001B59E1 /* main.m */,
 			);
 			path = Dmeo4;
@@ -108,9 +145,12 @@
 		CEB4FB621FB08D0E001B59E1 /* XKWebViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CE5D74B01FB18B2F00C7C832 /* CustomView */,
 				CEB4FB631FB08D0E001B59E1 /* NJKWebViewProgress */,
 				CEB4FB6A1FB08D3E001B59E1 /* XKWebViewController.h */,
 				CEB4FB6B1FB08D3E001B59E1 /* XKWebViewController.m */,
+				CE5D74A61FB1522100C7C832 /* XKNavigationController.h */,
+				CE5D74A71FB1522100C7C832 /* XKNavigationController.m */,
 			);
 			path = XKWebViewController;
 			sourceTree = "<group>";
@@ -126,6 +166,15 @@
 			path = NJKWebViewProgress;
 			sourceTree = "<group>";
 		};
+		F0F13A1C3D58AD18EFD1F2DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				36DE26770A608FC29DA87ED9 /* Pods-Dmeo4.debug.xcconfig */,
+				AEA3F761CD0515197C0C4DB2 /* Pods-Dmeo4.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,9 +182,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEB4FB5F1FB089F6001B59E1 /* Build configuration list for PBXNativeTarget "Dmeo4" */;
 			buildPhases = (
+				6246F1A487B0893469C706E3 /* [CP] Check Pods Manifest.lock */,
 				CEB4FB451FB089F6001B59E1 /* Sources */,
 				CEB4FB461FB089F6001B59E1 /* Frameworks */,
 				CEB4FB471FB089F6001B59E1 /* Resources */,
+				7EE6314DEE4C1DA6381BE8DD /* [CP] Embed Pods Frameworks */,
+				30172517EEF6C6D94F1EC9C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,6 +246,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		30172517EEF6C6D94F1EC9C6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dmeo4/Pods-Dmeo4-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6246F1A487B0893469C706E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dmeo4-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EE6314DEE4C1DA6381BE8DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dmeo4/Pods-Dmeo4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CEB4FB451FB089F6001B59E1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -205,8 +308,11 @@
 				CEB4FB511FB089F6001B59E1 /* ViewController.m in Sources */,
 				5E537F221FB133800087B309 /* RxWebViewNavigationViewController.m in Sources */,
 				5E537F211FB133800087B309 /* RxWebViewController.m in Sources */,
+				CE5D74B61FB18B2F00C7C832 /* XKShareButton.m in Sources */,
+				CE5D74A81FB1522100C7C832 /* XKNavigationController.m in Sources */,
 				CEB4FB5C1FB089F6001B59E1 /* main.m in Sources */,
 				CEB4FB4E1FB089F6001B59E1 /* AppDelegate.m in Sources */,
+				CE5D74B51FB18B2F00C7C832 /* XKCommonShareChannelSelectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,10 +444,13 @@
 		};
 		CEB4FB601FB089F6001B59E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36DE26770A608FC29DA87ED9 /* Pods-Dmeo4.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B2G72HF5QX;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $SRCROOT/$PROJECT_NAME/PrefixHeader.pch;
 				INFOPLIST_FILE = Dmeo4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lv.Dmeo4;
@@ -352,10 +461,13 @@
 		};
 		CEB4FB611FB089F6001B59E1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEA3F761CD0515197C0C4DB2 /* Pods-Dmeo4.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B2G72HF5QX;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $SRCROOT/$PROJECT_NAME/PrefixHeader.pch;
 				INFOPLIST_FILE = Dmeo4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lv.Dmeo4;

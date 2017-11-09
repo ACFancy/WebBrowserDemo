@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <UIKit/UIKit.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    if (@available(iOS 11.0, *)) {
+        [[UINavigationBar appearance] setBackIndicatorImage:[UIImage new]];
+        [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage new]];
+    }
     return YES;
 }
 

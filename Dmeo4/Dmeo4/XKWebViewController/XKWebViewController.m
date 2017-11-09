@@ -10,17 +10,20 @@
 
 #import "NJKWebViewProgress.h"
 #import "NJKWebViewProgressView.h"
+#import "XKCommonShareChannelSelectionView.h"
+#import <Masonry.h>
 
-#define boundsWidth self.view.bounds.size.width
-#define boundsHeight self.view.bounds.size.height
 
 @interface XKWebViewController ()<UIWebViewDelegate,UINavigationControllerDelegate,UINavigationBarDelegate,NJKWebViewProgressDelegate>
 
-@property (nonatomic)UIBarButtonItem* customBackBarItem;
 @property (nonatomic)UIBarButtonItem* closeButtonItem;
 
 @property (nonatomic)NJKWebViewProgress* progressProxy;
 @property (nonatomic)NJKWebViewProgressView* progressView;
+@property (nonatomic, strong) UIButton *navLeftButton;
+@property (nonatomic, strong) UIButton *navRightButton;
+@property (nonatomic, strong) XKCommonShareChannelSelectionView *shareChannelsView;
+
 
 /**
  *  array that hold snapshots
@@ -59,35 +62,85 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self initContentView];
 }
 
 - (instancetype)initWithUrl:(NSURL *)url{
     self = [super init];
     if (self) {
         self.url = url;
-        _progressViewColor = [UIColor colorWithRed:119.0/255 green:228.0/255 blue:115.0/255 alpha:1];
+        _progressViewColor =UIColorFromHEX(0x149ded);
     }
     return self;
 }
 
 - (void)initContentView {
-    self.title = @"";
+    self.navigationItem.title = @"";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    //config navigation item
-    self.navigationItem.leftItemsSupplementBackButton = YES;
-    
     self.webView.delegate = self.progressProxy;
+    self.webView.allowsInlineMediaPlayback = YES;
     [self.view addSubview:self.webView];
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
     
     [self.navigationController.navigationBar addSubview:self.progressView];
     // Do any additional setup after loading the view.
+    [self configNavigationBar];
+}
+
+- (void)configNavigationBar {
+    
+    [self createNavigationButtonWithImage:@"webview_back_btn" selectedImage:nil onLeft:YES withBlock:nil];
+    [self.navLeftButton addTarget:self action:@selector(clickBackButton) forControlEvents:UIControlEventTouchUpInside];
+    [self configShareButton];
+}
+
+- (void)configShareButton {
+    if (!self.navRightButton) {
+        [self createNavigationButtonWithImage:@"webView_share_btn" selectedImage:nil onLeft:NO withBlock:nil];
+        [self.navRightButton addTarget:self action:@selector(clickShareBtnAction) forControlEvents:UIControlEventTouchUpInside];
+//        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+//-  (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+//    return UIInterfaceOrientationLandscapeLeft;
+//}
+
+-  (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return YES;
+}
+
+-  (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    self.webView.frame = CGRectMake(0, CGRectGetHeight(self.navigationController.navigationBar.frame) , [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-CGRectGetHeight(self.navigationController.navigationBar.frame)-HEIGHT_HOME_INDICATOR);
+    [self.shareChannelsView updateSubviewsLayout];
+    
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
+}
+
+-  (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
 }
 
 
@@ -125,7 +178,7 @@
     }
     self.isSwipingBack = YES;
     //create a center of scrren
-    CGPoint center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
+    CGPoint center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2+NAVFRAME_BARHEIGHT/2.0);
     
     self.currentSnapShotView = [self.webView snapshotViewAfterScreenUpdates:YES];
     
@@ -158,15 +211,15 @@
         return;
     }
     
-    CGPoint currentSnapshotViewCenter = CGPointMake(boundsWidth/2, boundsHeight/2);
+    CGPoint currentSnapshotViewCenter = CGPointMake(WIDTH_SCREEN/2, HEIGHT_SCREEN/2);
     currentSnapshotViewCenter.x += distance;
-    CGPoint prevSnapshotViewCenter = CGPointMake(boundsWidth/2, boundsHeight/2);
-    prevSnapshotViewCenter.x -= (boundsWidth - distance)*60/boundsWidth;
+    CGPoint prevSnapshotViewCenter = CGPointMake(WIDTH_SCREEN/2, HEIGHT_SCREEN/2);
+    prevSnapshotViewCenter.x -= (WIDTH_SCREEN - distance)*60/WIDTH_SCREEN;
     //    NSLog(@"prev center x%f",prevSnapshotViewCenter.x);
     
     self.currentSnapShotView.center = currentSnapshotViewCenter;
     self.prevSnapShotView.center = prevSnapshotViewCenter;
-    self.swipingBackgoundView.alpha = (boundsWidth - distance)/boundsWidth;
+    self.swipingBackgoundView.alpha = (WIDTH_SCREEN - distance)/WIDTH_SCREEN;
 }
 
 -(void)endPopSnapShotView{
@@ -177,13 +230,13 @@
     //prevent the user touch for now
     self.view.userInteractionEnabled = NO;
     
-    if (self.currentSnapShotView.center.x >= boundsWidth) {
+    if (self.currentSnapShotView.center.x >= WIDTH_SCREEN) {
         // pop success
         [UIView animateWithDuration:0.2 animations:^{
             [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
             
-            self.currentSnapShotView.center = CGPointMake(boundsWidth*3/2, boundsHeight/2);
-            self.prevSnapShotView.center = CGPointMake(boundsWidth/2, boundsHeight/2);
+            self.currentSnapShotView.center = CGPointMake(WIDTH_SCREEN*3/2, HEIGHT_SCREEN/2);
+            self.prevSnapShotView.center = CGPointMake(WIDTH_SCREEN/2, HEIGHT_SCREEN/2);
             self.swipingBackgoundView.alpha = 0;
         }completion:^(BOOL finished) {
             [self.prevSnapShotView removeFromSuperview];
@@ -200,8 +253,8 @@
         [UIView animateWithDuration:0.2 animations:^{
             [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
             
-            self.currentSnapShotView.center = CGPointMake(boundsWidth/2, boundsHeight/2);
-            self.prevSnapShotView.center = CGPointMake(boundsWidth/2-60, boundsHeight/2);
+            self.currentSnapShotView.center = CGPointMake(WIDTH_SCREEN/2, HEIGHT_SCREEN/2);
+            self.prevSnapShotView.center = CGPointMake(WIDTH_SCREEN/2-60, HEIGHT_SCREEN/2);
             self.prevSnapShotView.alpha = 1;
         }completion:^(BOOL finished) {
             [self.prevSnapShotView removeFromSuperview];
@@ -217,18 +270,41 @@
 #pragma mark - update nav items
 
 -(void)updateNavigationItems{
+    UIBarButtonItem *spaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceButtonItem.width = -13;
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:self.navLeftButton];
     if (self.webView.canGoBack) {
-        UIBarButtonItem *spaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        spaceButtonItem.width = -6.5;
         
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-        [self.navigationItem setLeftBarButtonItems:@[self.closeButtonItem] animated:NO];
-        
-        //弃用customBackBarItem，使用原生backButtonItem
-        //        [self.navigationItem setLeftBarButtonItems:@[spaceButtonItem,self.customBackBarItem,self.closeButtonItem] animated:NO];
+        [self.navigationItem setLeftBarButtonItems:@[spaceButtonItem, backButton,self.closeButtonItem] animated:NO];
     }else{
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-        [self.navigationItem setLeftBarButtonItems:nil];
+        [self.navigationItem setLeftBarButtonItems:@[spaceButtonItem, backButton] animated:NO];
+    }
+}
+
+- (void)createNavigationButtonWithImage:(NSString*)imageName selectedImage:(NSString*)selectedImageName onLeft:(BOOL)isLeft withBlock:(void(^)(void))block {
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 44, 44);
+    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    if (selectedImageName.length > 0) {
+        [button setImage:[UIImage imageNamed:selectedImageName] forState:UIControlStateHighlighted];
+    }
+    
+    if (isLeft) {
+        UIBarButtonItem *spaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        spaceButtonItem.width = -13;
+        button.frame = (CGRect){-10, 0, 32, 44};
+        button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        self.navLeftButton = button;
+        self.navigationItem.leftBarButtonItems = @[spaceButtonItem,[[UIBarButtonItem alloc] initWithCustomView:button]];
+    } else {
+        button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 5);
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        self.navRightButton = button;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     }
 }
 
@@ -254,7 +330,29 @@
 }
 
 -(void)closeItemClicked{
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_isPushed) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (void)clickBackButton {
+    if (self.webView.canGoBack) {
+//        _isHideCloseButton = NO;
+        [self updateNavigationItems];
+        [self.webView goBack];
+    } else {
+        if (self.isPushed) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }
+}
+
+- (void)clickShareBtnAction {
+    [self.shareChannelsView showInView:self.navigationController.navigationBar.superview];
 }
 
 #pragma mark - webView delegate
@@ -297,11 +395,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     [self updateNavigationItems];
-    NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    if (theTitle.length > 10) {
-        theTitle = [[theTitle substringToIndex:9] stringByAppendingString:@"…"];
-    }
-    self.title = theTitle;
+//    NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+//    if (theTitle.length > 10) {
+//        theTitle = [[theTitle substringToIndex:9] stringByAppendingString:@"…"];
+//    }
+//    self.title = theTitle;
     //    [self.progressView setProgress:1 animated:NO];
 }
 
@@ -318,49 +416,60 @@
 
 
 #pragma mark - setters and getters
--(void)setUrl:(NSURL *)url{
+- (void)setUrl:(NSURL *)url{
     _url = url;
 }
 
--(void)setProgressViewColor:(UIColor *)progressViewColor{
+- (void)setProgressViewColor:(UIColor *)progressViewColor{
     _progressViewColor = progressViewColor;
     self.progressView.progressColor = progressViewColor;
 }
 
--(UIWebView*)webView{
+- (UIWebView*)webView{
     if (!_webView) {
-        _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, NAVFRAME_BARHEIGHT, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-NAVFRAME_BARHEIGHT-HEIGHT_HOME_INDICATOR)];
+//        if (@available(iOS 11.0, *)) {
+//            _webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//        }
         _webView.delegate = (id)self;
         _webView.scalesPageToFit = YES;
-        _webView.backgroundColor = [UIColor whiteColor];
+        _webView.backgroundColor = UIColorFromHEX(0xeaeaea);
+        _webView.scrollView.backgroundColor = UIColorFromHEX(0xeaeaea);
         [_webView addGestureRecognizer:self.swipePanGesture];
     }
     return _webView;
 }
 
--(UIBarButtonItem*)customBackBarItem{
-    if (!_customBackBarItem) {
-        UIImage* backItemImage = [[UIImage imageNamed:@"backItemImage"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        UIImage* backItemHlImage = [[UIImage imageNamed:@"backItemImage-hl"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        
-        UIButton* backButton = [[UIButton alloc] init];
-        [backButton setTitle:@"返回" forState:UIControlStateNormal];
-        [backButton setTitleColor:self.navigationController.navigationBar.tintColor forState:UIControlStateNormal];
-        [backButton setTitleColor:[self.navigationController.navigationBar.tintColor colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-        [backButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
-        [backButton setImage:backItemImage forState:UIControlStateNormal];
-        [backButton setImage:backItemHlImage forState:UIControlStateHighlighted];
-        [backButton sizeToFit];
-        
-        [backButton addTarget:self action:@selector(customBackItemClicked) forControlEvents:UIControlEventTouchUpInside];
-        _customBackBarItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    }
-    return _customBackBarItem;
-}
-
 -(UIBarButtonItem*)closeButtonItem{
     if (!_closeButtonItem) {
-        _closeButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(closeItemClicked)];
+        
+        UIView *customView = [[UIView alloc] initWithFrame:(CGRect){0, 0, 45, 44}];
+        UIButton *closeBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
+        closeBtn.titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightBold];
+        [closeBtn setTitleColor:UIColorFromHEX(0x29a9f3) forState:UIControlStateNormal];
+        [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
+        [closeBtn addTarget:self action:@selector(closeItemClicked) forControlEvents:UIControlEventTouchUpInside];
+        UIView *lineView = [[UIView alloc] init];
+        lineView.backgroundColor = UIColorFromHEX(0xd9d9d9);
+        [customView addSubview:lineView];
+        [customView addSubview:closeBtn];
+        
+        [lineView makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(customView.centerY);
+            make.height.equalTo(21);
+            make.width.equalTo(1);
+            make.left.equalTo(customView.left).offset(-10);
+        }];
+        
+        [closeBtn makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.equalTo(customView);
+            make.height.equalTo(customView.height);
+            make.width.equalTo(customView.width);
+            make.centerX.equalTo(customView.centerX);
+            make.centerY.equalTo(customView.centerY);
+        }];
+        
+        _closeButtonItem = [[UIBarButtonItem alloc] initWithCustomView:customView];
     }
     return _closeButtonItem;
 }
@@ -407,13 +516,20 @@
     if (!_progressView) {
         CGFloat progressBarHeight = 3.0f;
         CGRect navigaitonBarBounds = self.navigationController.navigationBar.bounds;
-        //        CGRect barFrame = CGRectMake(0, navigaitonBarBounds.size.height - progressBarHeight-0.5, navigaitonBarBounds.size.width, progressBarHeight);
         CGRect barFrame = CGRectMake(0, navigaitonBarBounds.size.height, navigaitonBarBounds.size.width, progressBarHeight);
         _progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
         _progressView.progressColor = self.progressViewColor;
         _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     }
     return _progressView;
+}
+
+- (XKCommonShareChannelSelectionView *)shareChannelsView {
+    if (_shareChannelsView == nil) {
+        _shareChannelsView = [XKCommonShareChannelSelectionView shareChannelSelectionView];
+//        _shareChannelsView.delegate = self;
+    }
+    return _shareChannelsView;
 }
 
 @end

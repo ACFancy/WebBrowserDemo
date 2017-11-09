@@ -10,6 +10,9 @@
 
 @interface XKWebViewController : UIViewController
 
+
+@property (nonatomic) BOOL isPushed;
+
 /**
  *  origin url
  */
@@ -24,6 +27,13 @@
  *  tint color of progress view
  */
 @property (nonatomic)UIColor* progressViewColor;
+
+
+//分享参数
+@property (nonatomic, strong) NSString *shareTitle;
+@property (nonatomic, strong) NSString *shareUrl;
+@property (nonatomic, strong) NSString *shareDesc;
+@property (nonatomic, strong) NSString *shareImageUrl;
 
 /**
  *  get instance with url

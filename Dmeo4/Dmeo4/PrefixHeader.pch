@@ -1,0 +1,50 @@
+//
+//  PrefixHeader.pch
+//  Dmeo4
+//
+//  Created by User on 11/7/17.
+//  Copyright © 2017 User. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+/********Masonry相关宏*****************/
+#define MAS_SHORTHAND
+#define MAS_SHORTHAND_GLOBALS
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#define YSISiPhoneX ((WIDTH_SCREEN == 375) && (HEIGHT_SCREEN == 812) || (WIDTH_SCREEN == 812 && HEIGHT_SCREEN == 375))
+
+/***** 项目中字体 *****/
+#define YSFont(size, style) [UIFont systemFontOfSize:size weight:style]
+#define YSFontRegular(size) YSFont(size, UIFontWeightRegular)
+#define YSFontThin(size)    YSFont(size, UIFontWeightThin)
+#define YSFontLight(size)   YSFont(size, UIFontWeightLight)
+#define YSFontMedium(size)  YSFont(size, UIFontWeightMedium)
+#define YSFontBlod(size)    YSFont(size, UIFontWeightBold)
+
+#define UIColorFromRGB(rgbValue, alp) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alp]
+#define UIColorFromHEX(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define UIColorFromARGB(argbValue) [UIColor colorWithRed:((float)((argbValue & 0xFF0000) >> 16))/255.0 green:((float)((argbValue & 0xFF00) >> 8))/255.0 blue:((float)(argbValue & 0xFF))/255.0 alpha:((float)((argbValue & 0xFF000000) >> 24))/255.0]
+
+#pragma mark - Frame
+#define WIDTH_SCREEN        [UIScreen mainScreen].bounds.size.width
+#define HEIGHT_SCREEN       [UIScreen mainScreen].bounds.size.height
+#define APP_WIDTH_SCREEN    [UIScreen mainScreen ].applicationFrame.size.width
+#define APP_HEIGHT_SCREEN   [UIScreen mainScreen ].applicationFrame.size.height
+#define APP_STATUSBAR_WIDTH [[UIApplication sharedApplication] statusBarFrame].size.width
+#define APP_STATUSBAR_HEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
+#define HEIGHT_STATUSBAR    APP_STATUSBAR_HEIGHT
+#define HEIGHT_TABBAR       49
+#define HEIGHT_NAVBAR       44
+#define NAVFRAME_BARHEIGHT (HEIGHT_NAVBAR+HEIGHT_STATUSBAR)
+#define Frame_Ratio(x,d) ((x)/(375.0 - (d))*(WIDTH_SCREEN - (d)))
+#define Frame_RatioY(y,d) ((y)/(667.0 - (d))*(HEIGHT_SCREEN - (d)))
+#define RPX(x) Frame_Ratio(x,0)
+#define HEIGHT_HOME_INDICATOR (YSISiPhoneX ? 34 : 0)
+#define HEIGHT_CUSTOM_TABBAR (50 + HEIGHT_HOME_INDICATOR)
+
+#endif /* PrefixHeader_pch */
